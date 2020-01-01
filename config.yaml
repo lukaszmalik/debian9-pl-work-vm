@@ -12,6 +12,9 @@ dotfiles:
   f_exports:
     src: exports
     dst: ~/.exports
+  f_vagrantfile:
+    src: vagrant/debian-jessie-libvirt/Vagrantfile
+    dst: ~/.vagrant/debian-jessie-libvirt/Vagrantfile
 profiles:
   debian-chanda:
     include:
@@ -21,3 +24,4 @@ profiles:
     - f_aliases
     - f_bashrc
     - f_exports
+    - f_vagrantfile

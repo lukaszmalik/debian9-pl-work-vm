@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "debian-chanda"
+  config.vm.box = "debian/buster64"
+  config.vm.hostname = "debian-chanda"
+  config.vm.box_check_update = false
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+  # config.vm.synced_folder "../data", "/vagrant_data"
+  $rootscript = <<-SHELL
+    locale-gen "pl_PL.UTF-8"
+    export DEBIAN_FRONTEND=noninteractive; apt-get update
+    apt-get -qqy upgrade
+    apt-get -qqy install htop mc vim screen git tig zsh curl jq default-mysql-client python3-pip
+    curl -fsSL https://get.docker.com -o- | sh
+    usermod -aG docker vagrant
+    curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod 744 /usr/local/bin/docker-compose
+  SHELL
+  $script = <<-SHELL
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install v12.14.0
+    ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
+    pip3 install --user dotdrop
+    git clone https://github.com/lukaszmalik/dotfiles.git .dotfiles
+    ./.dotfiles/dotdrop.sh install -f
+  SHELL
+  config.vm.provision "shell", inline: $rootscript 
+  config.vm.provision "shell", inline: $script, privileged: false
+end
+
