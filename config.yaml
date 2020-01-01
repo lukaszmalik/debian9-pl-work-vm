@@ -9,6 +9,9 @@ dotfiles:
   f_bashrc:
     src: bashrc
     dst: ~/.bashrc
+  f_exports:
+    src: exports
+    dst: ~/.exports
 profiles:
   debian-chanda:
     include:
@@ -17,3 +20,4 @@ profiles:
     dotfiles:
     - f_aliases
     - f_bashrc
+    - f_exports
