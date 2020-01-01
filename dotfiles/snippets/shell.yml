@@ -22,6 +22,14 @@ tcpdump:port:
   desc: listen traffic on port
   command: |
     tcpdump -nqt -s 0 -A -i eth0 port <<port>>
+gpg:encrypt:
+  do: exec
+  desc: encrypt a file with GPG2
+  command: gpg -r <<keyname(lukasz.malik@almservices.pl)>> --encrypt --output <<file>>_enc <<file>>
+gpg:decrypt:
+  do: exec
+  desc: encrypt a file with GPG2
+  command: gpg -q --for-your-eyes-only --no-tty -d <<file>> > <<file>>.decoded 
 ngrep:port:
   do: exec
   desc: ngrep to port
