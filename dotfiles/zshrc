@@ -1,0 +1,66 @@
+source ~/.exports
+source ~/.aliases
+
+CASE_SENSITIVE="true"
+DISABLE_AUTO_UPDATE="true"
+HIST_STAMPS="yyyy/mm/dd"
+plugins=(
+  # brew
+  autojump
+  cp
+  django
+  git
+  git-flow
+  gitignore
+  pip
+  tmux
+  # vim-inteaction
+)
+
+corobia() {
+for i in `find . -mindepth 1 -maxdepth 1 -type d `; do;
+  echo $i;
+  cd $i
+  git --no-pager my --before=$1 --after=$2 | sort
+  cd - &>/dev/null
+done;
+}
+
+gt() { grep --color=always -n -Rs $2 $1 . }
+gtf() { grep -Rl $2 $1 . }
+h() { cat $HISTFILE | grep $1 }
+
+#alias -s pdf="open"
+#alias -s {jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF}="open"
+#alias -s {mp3,ogg,wav,flac}="open"
+#alias -s {mpg,mpeg,avi,ogm,wmv,m4v,mp4,mov}="open"
+
+alias -s {txt}="vim"
+alias -g ...="../.."
+alias -g ALL="print -C 1 **/**"
+alias -g DO="| xargs -n1 "
+alias -g G="| egrep -i"
+alias -g GI="| egrep -iv"
+alias -g L="| less"
+alias -g M="| more"
+alias -g S="| sort"
+alias -g NOCOLOR='|sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
+
+setopt always_to_end
+setopt auto_resume
+setopt autocd
+setopt complete_in_word
+setopt extended_history
+setopt extendedglob
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt inc_append_history
+setopt listpacked
+setopt no_always_last_prompt
+setopt nobeep
+setopt prompt_cr
+setopt share_history
+setopt short_loops
+setopt prompt_subst
+
+

@@ -1,0 +1,60 @@
+syntax on
+
+" SETS
+set undofile
+set undodir=$TEMP
+
+set autochdir
+set autoindent
+set completeopt=longest,menuone
+set fenc=utf-8
+set fileencodings=utf-8,latin2
+set gdefault
+set hidden
+set ignorecase
+set incsearch
+set laststatus=2
+set mouse=a
+set nobackup
+set nocompatible
+set noexpandtab
+set foldmethod=indent
+set nofoldenable
+set nowrap
+set nowritebackup
+set number
+set ruler
+set showcmd
+set t_Co=256
+set tabpagemax=50
+set wildmenu
+set wrapscan
+set clipboard+=autoselect
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set expandtab
+set guioptions=agrLTi
+
+"Leader
+let mapleader = " "
+
+"FUNCTIONS
+command! DosToUnix %s/\r//g
+command! Q q
+command! W w
+command! RmEmptyLines g/^$/d
+
+fun s:TabsToSpaces()
+    set expandtab ts=4 sw=4 ai
+    %retab
+endf
+command! TabsToSpaces call s:TabsToSpaces()
+
+
+"MOUSE
+set mouse+=a
+if &term =~ '^screen'
+    set ttymouse=xterm2
+endif
+

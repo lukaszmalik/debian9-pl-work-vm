@@ -18,4 +18,7 @@ alias dotdrop='~/.dotfiles/dotdrop.sh --cfg=~/.dotfiles/config.yaml'
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"
 
-
+alias docker_mitm="docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 8081:8081 -p 8080:8080 mitmproxy/mitmproxy"
+alias docker_pybtc="docker run -it -v ~/:/mac lovato/python-2.6 bash"
+alias docker_node="docker run -it -v ~/:/mac --publish 127.0.0.1:19051:19051 node:8.9.1 bash"
+alias docker_postgres="docker run --publish 127.0.0.1:5432:5432 --name lastsignal-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres"

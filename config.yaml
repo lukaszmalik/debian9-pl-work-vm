@@ -24,6 +24,12 @@ dotfiles:
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
+  f_vimrc:
+    src: vimrc
+    dst: ~/.vimrc
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
 profiles:
   debian:
     dotfiles:
@@ -41,3 +47,5 @@ profiles:
     - f_my.cnf
     - f_gitconfig
     - f_tmux.conf
+    - f_vimrc
+    - f_zshrc
