@@ -1,7 +1,7 @@
 config:
   backup: true
   create: true
-  dotpath: .dotfiles
+  dotpath: dotfiles
 dotfiles:
   f_aliases:
     src: aliases
