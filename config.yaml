@@ -16,12 +16,16 @@ dotfiles:
     src: vagrant/debian-jessie-libvirt/Vagrantfile
     dst: ~/.vagrant/debian-jessie-libvirt/Vagrantfile
 profiles:
-  debian-chanda:
-    include:
-    - pop-os
-  pop-os:
+  debian:
     dotfiles:
     - f_aliases
     - f_bashrc
     - f_exports
+  debian-chanda:
+    include:
+    - debian 
+  pop-os:
+    include:
+    - debian 
+    dotfiles:
     - f_vagrantfile
