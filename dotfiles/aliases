@@ -12,7 +12,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
+alias s="env TERM=xterm-256color tmux"
+alias sr="env TERM=xterm-256color tmux attach"
 alias dotdrop='~/.dotfiles/dotdrop.sh --cfg=~/.dotfiles/config.yaml'
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"

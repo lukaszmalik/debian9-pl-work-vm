@@ -15,6 +15,15 @@ dotfiles:
   f_vagrantfile:
     src: vagrant/debian-jessie-libvirt/Vagrantfile
     dst: ~/.vagrant/debian-jessie-libvirt/Vagrantfile
+  f_my.cnf:
+    src: my.cnf
+    dst: ~/.my.cnf
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+  f_tmux.conf:
+    src: tmux.conf
+    dst: ~/.tmux.conf
 profiles:
   debian:
     dotfiles:
@@ -23,9 +32,12 @@ profiles:
     - f_exports
   debian-chanda:
     include:
-    - debian 
+    - debian
   pop-os:
     include:
-    - debian 
+    - debian
     dotfiles:
     - f_vagrantfile
+    - f_my.cnf
+    - f_gitconfig
+    - f_tmux.conf
