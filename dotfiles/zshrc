@@ -1,9 +1,10 @@
-source ~/.exports
-source ~/.aliases
-
+export ZSH="/home/finch/.oh-my-zsh"
+ENABLE_CORRECTION="true"
+ZSH_THEME="jreese"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="yyyy/mm/dd"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
   # brew
   autojump
@@ -15,7 +16,11 @@ plugins=(
   pip
   tmux
   # vim-inteaction
-)
+) 
+source $ZSH/oh-my-zsh.sh
+
+source ~/.exports
+source ~/.aliases
 
 corobia() {
 for i in `find . -mindepth 1 -maxdepth 1 -type d `; do;
@@ -62,5 +67,4 @@ setopt prompt_cr
 setopt share_history
 setopt short_loops
 setopt prompt_subst
-
 

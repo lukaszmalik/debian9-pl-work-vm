@@ -36,6 +36,11 @@ profiles:
     - f_aliases
     - f_bashrc
     - f_exports
+    - f_gitconfig
+    - f_my.cnf
+    - f_tmux.conf
+    - f_vimrc
+    - f_zshrc
   debian-chanda:
     include:
     - debian
@@ -44,8 +49,3 @@ profiles:
     - debian
     dotfiles:
     - f_vagrantfile
-    - f_my.cnf
-    - f_gitconfig
-    - f_tmux.conf
-    - f_vimrc
-    - f_zshrc
