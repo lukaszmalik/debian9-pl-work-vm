@@ -10,6 +10,9 @@ dotfiles:
     src: bashrc
     dst: ~/.bashrc
 profiles:
+  debian-chanda:
+    include:
+    - pop-os
   pop-os:
     dotfiles:
     - f_aliases
