@@ -1,0 +1,66 @@
+---
+alias:add:
+  do: exec
+  desc: add alias and reload rc
+  command: >-
+    echo "alias <<alias>>='<<command>>'" >>
+    ~/.bash_aliases; source ~/.bash_aliases
+user:group:
+  do: exec
+  desc: add user to group
+  command: usermod -a -G <<group>> <<user>>
+curl:upload:
+  do: exec
+  desc: encrypt file and upload to transfer.sh
+  command: |
+    gpg -c <<file>>;
+    curl --upload-file <<file>>.gpg https://transfer.sh/<<file>>.gpg
+curl:ip:
+  do: exec
+  desc: my external ip
+  command: curl canhazip.com
+sshconfig:add:
+  do: exec
+  desc: add new machine to ssh config
+mount:ram:
+  do: copy
+  desc: mount ram as file system
+  command: mount -t ramfs -o size=<<size#In GB>>G ramfs <<path>>
+tcpdump:port:
+  do: exec
+  desc: listen traffic on port
+  command: |
+    tcpdump -nqt -s 0 -A -i eth0 port <<port>>
+ngrep:port:
+  do: exec
+  desc: ngrep to port
+  command: ngrep -W byline -d eth0 <<port>>
+sed:replace:
+  do: exec
+  desc: replace string in all files
+  command: |
+    sed -i 's/<<match>>/<<replace>>/g' *.<<ext>>
+smtp:server:
+  do: exec
+  desc: smtp server in python. Prints mails to stdout
+  command: |
+    python -m smtpd -n -c DebuggingServer localhost:1025
+tar:file:
+  do: exec
+  desc: create a gzipped archive
+  command: tar czvf <<out>>.tar.gz <<in>>
+service:disable:
+  do: copy
+  desc: disable service on ubuntu
+  tags:
+    - ubuntu
+  command: sudo update-rc.d <<name>> disable
+service:status:
+  do: copy
+  desc: list all services
+  tags:
+    - centos
+  command: systemctl -t service
+for:file:
+  do: exec
+  desc: recursive for file loop

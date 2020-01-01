@@ -68,3 +68,7 @@ setopt share_history
 setopt short_loops
 setopt prompt_subst
 
+
+[ -f ~/.sman/sman.rc ] && source ~/.sman/sman.rc
+
+export PATH=$PATH:~/.sman/bin

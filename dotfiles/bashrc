@@ -51,3 +51,7 @@ fi
 
 source ~/.exports
 source ~/.aliases
+
+[ -f ~/.sman/sman.rc ] && source ~/.sman/sman.rc
+
+export PATH=$PATH:~/.sman/bin

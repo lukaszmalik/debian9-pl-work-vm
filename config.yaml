@@ -30,14 +30,22 @@ dotfiles:
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
+  d_snippets:
+    src: snippets
+    dst: ~/.snippets
+  f_sman.rc:
+    src: sman/sman.rc
+    dst: ~/.sman/sman.rc
 profiles:
   debian:
     dotfiles:
+    - d_snippets
     - f_aliases
     - f_bashrc
     - f_exports
     - f_gitconfig
     - f_my.cnf
+    - f_sman.rc
     - f_tmux.conf
     - f_vimrc
     - f_zshrc
