@@ -1,0 +1,16 @@
+config:
+  backup: true
+  create: true
+  dotpath: .dotfiles
+dotfiles:
+  f_aliases:
+    src: aliases
+    dst: ~/.aliases
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+profiles:
+  pop-os:
+    dotfiles:
+    - f_aliases
+    - f_bashrc
