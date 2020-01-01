@@ -32,7 +32,11 @@ Vagrant.configure("2") do |config|
     ./.dotfiles/dotdrop.sh install -f
     # gpg --gen-key
   SHELL
+  $chsh= <<-SHELL
+    chsh -s /bin/zsh vagrant
+  SHELL
   config.vm.provision "shell", inline: $rootscript 
   config.vm.provision "shell", inline: $script, privileged: false
+  config.vm.provision "shell", inline: $chsh
 end
 

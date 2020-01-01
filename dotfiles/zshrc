@@ -1,4 +1,4 @@
-export ZSH="/home/finch/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ENABLE_CORRECTION="true"
 ZSH_THEME="jreese"
 CASE_SENSITIVE="true"
