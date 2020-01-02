@@ -9,12 +9,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-vinegar'
   Plug 'https://github.com/airblade/vim-gitgutter'
+  Plug 'sainnhe/edge'
   Plug 'flrnprz/plastic.vim'
 call plug#end()
 
-colorscheme plastic
-let g:lightline = { 'colorscheme': 'plastic' }
 
 " SETS
 set undofile
@@ -79,4 +79,17 @@ endif
 "Plugins
 let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 let g:fzf_buffers_jump = 1
+
+let g:netrw_banner       = 0
+let g:netrw_keepdir      = 0
+let g:netrw_liststyle    = 3
+let g:netrw_sort_options = 'i'
+
+" Colors
+let g:edge_style = 'neon'
+let g:edge_disable_italic_comment = 1
+set background=dark
+colorscheme edge
+let g:lightline = { 'colorscheme': 'edge' }
+
 
