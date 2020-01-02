@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-vinegar'
   Plug 'https://github.com/airblade/vim-gitgutter'
+  Plug 'scrooloose/nerdtree'
   Plug 'sainnhe/edge'
   Plug 'flrnprz/plastic.vim'
 call plug#end()
@@ -69,6 +70,10 @@ fun s:TabsToSpaces()
 endf
 command! TabsToSpaces call s:TabsToSpaces()
 
+"Mappings
+map <c-\> :NERDTreeToggle<cr>
+map <c-f> :GFiles<cr>
+map <c-b> :Buffers<cr>
 
 "MOUSE
 set mouse+=a
