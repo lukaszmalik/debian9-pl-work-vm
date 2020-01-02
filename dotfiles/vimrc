@@ -1,5 +1,19 @@
 syntax on
 
+call plug#begin('~/.vim/plugged')
+  Plug 'itchyny/lightline.vim'
+  Plug 'https://github.com/romainl/vim-cool'
+  Plug 'https://github.com/tpope/vim-commentary'
+  Plug 'https://github.com/tpope/vim-surround'
+  Plug 'francoiscabrol/ranger.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'https://github.com/morhetz/gruvbox'
+call plug#end()
+
+colorscheme gruvbox
+let g:lightline = { 'colorscheme': 'gruvbox' }
+
 " SETS
 set undofile
 set undodir=$TEMP
@@ -22,7 +36,7 @@ set foldmethod=indent
 set nofoldenable
 set nowrap
 set nowritebackup
-set number
+set relativenumber number
 set ruler
 set showcmd
 set t_Co=256
@@ -30,6 +44,7 @@ set tabpagemax=50
 set wildmenu
 set wrapscan
 set clipboard+=autoselect
+set background=dark
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
@@ -44,6 +59,7 @@ command! DosToUnix %s/\r//g
 command! Q q
 command! W w
 command! RmEmptyLines g/^$/d
+cnoremap w!! %!sudo tee > /dev/null
 
 fun s:TabsToSpaces()
     set expandtab ts=4 sw=4 ai
@@ -57,4 +73,8 @@ set mouse+=a
 if &term =~ '^screen'
     set ttymouse=xterm2
 endif
+
+"Plugins
+let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
+let g:fzf_buffers_jump = 1
 

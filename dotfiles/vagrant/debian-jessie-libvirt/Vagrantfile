@@ -14,20 +14,26 @@ Vagrant.configure("2") do |config|
     locale-gen "pl_PL.UTF-8"
     export DEBIAN_FRONTEND=noninteractive; apt-get update
     apt-get -qqy upgrade
-    apt-get -qqy install htop mc vim screen git tig zsh curl jq default-mysql-client python3-pip gnupg2 autojump ncdu tmux
+    apt-get -qqy install htop mc vim screen git tig zsh curl jq default-mysql-client python3-pip gnupg2 autojump ncdu tmux ranger
     curl -fsSL https://get.docker.com -o- | sh
     usermod -aG docker vagrant
     curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     chmod 744 /usr/local/bin/docker-compose
   SHELL
   $script = <<-SHELL
+    # NVM
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     nvm install v12.14.0
+    # ZSH 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    # SNIPPETS 
     yes | bash -c "$(curl https://raw.githubusercontent.com/tokozedg/sman/master/install.sh)" 
     rm -rf snippets
+    # VIM
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    # DOTFILES 
     ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
     pip3 install --user dotdrop
     git clone https://github.com/lukaszmalik/dotfiles.git .dotfiles

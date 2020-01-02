@@ -15,6 +15,7 @@ plugins=(
   gitignore
   pip
   tmux
+  zsh-nvm
   # vim-inteaction
 ) 
 source $ZSH/oh-my-zsh.sh
@@ -34,6 +35,7 @@ done;
 gt() { grep --color=always -n -Rs $2 $1 . }
 gtf() { grep -Rl $2 $1 . }
 h() { cat $HISTFILE | grep $1 }
+dps() {ssh -o "StrictHostKeyChecking no" lukaszmalik@$1 "sudo docker ps"; }
 
 #alias -s pdf="open"
 #alias -s {jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF}="open"
