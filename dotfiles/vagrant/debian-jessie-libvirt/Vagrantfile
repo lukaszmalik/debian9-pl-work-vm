@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
     locale-gen "pl_PL.UTF-8"
     export DEBIAN_FRONTEND=noninteractive; apt-get update
     apt-get -qqy upgrade
-    apt-get -qqy install htop mc vim screen git tig zsh curl jq default-mysql-client python3-pip gnupg2 autojump ncdu tmux ranger
+    apt-get -qqy install htop mc vim screen git tig zsh curl jq default-mysql-client python3-pip gnupg2 autojump ncdu silversearcher-ag tmux ranger
     curl -fsSL https://get.docker.com -o- | sh
     usermod -aG docker vagrant
     curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose

@@ -36,6 +36,12 @@ dotfiles:
   f_sman.rc:
     src: sman/sman.rc
     dst: ~/.sman/sman.rc
+  f_config:
+    src: ssh/config
+    dst: ~/.ssh/config
+  f_xresources:
+    src: Xresources
+    dst: ~/.Xresources
 profiles:
   debian:
     dotfiles:
@@ -49,6 +55,8 @@ profiles:
     - f_tmux.conf
     - f_vimrc
     - f_zshrc
+    - f_config
+    - f_xresources
   debian-chanda:
     include:
     - debian

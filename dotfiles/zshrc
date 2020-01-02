@@ -15,7 +15,7 @@ plugins=(
   gitignore
   pip
   tmux
-  zsh-nvm
+  # zsh-nvm
   # vim-inteaction
 ) 
 source $ZSH/oh-my-zsh.sh

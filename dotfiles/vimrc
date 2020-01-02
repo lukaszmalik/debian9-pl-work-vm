@@ -8,11 +8,27 @@ call plug#begin('~/.vim/plugged')
   Plug 'francoiscabrol/ranger.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-  Plug 'https://github.com/morhetz/gruvbox'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-vinegar'
+  Plug 'https://github.com/airblade/vim-gitgutter'
+  Plug 'scrooloose/nerdtree'
+  Plug 'mhinz/vim-startify'
+  Plug 'bogado/file-line'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'pangloss/vim-javascript'
+  Plug 'sainnhe/edge'
+  Plug 'mileszs/ack.vim'
+  Plug 'mg979/vim-visual-multi'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'junegunn/goyo.vim'
+  if has('python3')
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'roxma/nvim-yarp'
+      Plug 'roxma/vim-hug-neovim-rpc'
+      Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  endif
 call plug#end()
 
-colorscheme gruvbox
-let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " SETS
 set undofile
@@ -52,12 +68,13 @@ set expandtab
 set guioptions=agrLTi
 
 "Leader
-let mapleader = " "
+let mapleader="."
 
 "FUNCTIONS
 command! DosToUnix %s/\r//g
 command! Q q
 command! W w
+command! Wq wq
 command! RmEmptyLines g/^$/d
 cnoremap w!! %!sudo tee > /dev/null
 
@@ -67,6 +84,22 @@ fun s:TabsToSpaces()
 endf
 command! TabsToSpaces call s:TabsToSpaces()
 
+"Mappings
+map <c-\> :NERDTreeToggle<cr>
+map <c-o> :GFiles<cr>
+map <c-p> :Ranger<cr>
+map <c-l> :Buffers<cr>
+map <c-f> :LAck
+map <c-z> :Goyo<cr>
+
+"Mappings - easymotion
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
+map  <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "MOUSE
 set mouse+=a
@@ -75,6 +108,57 @@ if &term =~ '^screen'
 endif
 
 "Plugins
+let g:goyo_width = 90
+
+if has('python3') "deoplete does not work when there's no python3 (pip3 install --user pynvim) installed
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#sources#ternjs#tern_bin = '/home/finch/.nvm/versions/node/v12.14.0/bin/tern'
+    let g:deoplete#sources#ternjs#timeout = 1
+    let g:deoplete#sources#ternjs#docs = 1
+    let g:deoplete#sources#ternjs#case_insensitive = 1
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+endif
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+let g:ack_autoclose = 1
+let g:ackhighlight = 1
+
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+
 let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 let g:fzf_buffers_jump = 1
+
+let g:netrw_banner       = 0
+let g:netrw_keepdir      = 0
+let g:netrw_liststyle    = 3
+let g:netrw_sort_options = 'i'
+
+"Vim Session
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+"Startify
+let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_list_order = [
+            \ ['   Sessions:'],
+            \ 'sessions',
+            \ ['   Recent files:'],
+            \ 'files',
+            \ ['   ... in the current directory:'],
+            \ 'dir',
+            \ ['   Bookmarks:'],
+            \ 'bookmarks',
+            \ ]
+
+" Colors
+let g:edge_style = 'neon'
+let g:edge_disable_italic_comment = 1
+set background=dark
+colorscheme edge
+let g:lightline = { 'colorscheme': 'edge' }
+
 
