@@ -8,11 +8,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'francoiscabrol/ranger.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-  Plug 'https://github.com/morhetz/gruvbox'
+  Plug 'tpope/vim-fugitive'
+  Plug 'https://github.com/airblade/vim-gitgutter'
+  Plug 'flrnprz/plastic.vim'
 call plug#end()
 
-colorscheme gruvbox
-let g:lightline = { 'colorscheme': 'gruvbox' }
+colorscheme plastic
+let g:lightline = { 'colorscheme': 'plastic' }
 
 " SETS
 set undofile
