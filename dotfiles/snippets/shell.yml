@@ -9,6 +9,10 @@ curl:upload:
   command: |
     gpg -c <<file>>;
     curl --upload-file <<file>>.gpg https://transfer.sh/<<file>>.gpg
+ssh:tunel:
+  do: exec
+  desc: tunnel port (ie 8000) to externalIp:port
+  command: autossh -fN -R <<remoteOpenPort(10088)>>:localhost:<<localPort(8000)>> <<host(mydevil)>> -p<<sshPort(22)>> 
 curl:ip:
   do: exec
   desc: my external ip

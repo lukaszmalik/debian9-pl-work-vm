@@ -18,9 +18,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'pangloss/vim-javascript'
   Plug 'sainnhe/edge'
   Plug 'mileszs/ack.vim'
-  Plug 'mg979/vim-visual-multi'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'junegunn/goyo.vim'
+  if v:version >= 800
+      Plug 'mg979/vim-visual-multi'
+  endif
   if has('python3')
       Plug 'Shougo/deoplete.nvim'
       Plug 'roxma/nvim-yarp'
