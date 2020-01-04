@@ -81,3 +81,4 @@ profiles:
     - debian
     dotfiles:
     - f_vagrantfile
+    - f_debian-chanda-x_vagrantfile
