@@ -42,21 +42,33 @@ dotfiles:
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
+  f_ini:
+    src: config/mc/ini
+    dst: ~/.config/mc/ini
 profiles:
+  MacBook-Pro-ukasz.local:
+    include:
+    - debian
+    dotfiles:
+    - f_vagrantfile
   debian:
     dotfiles:
     - d_snippets
     - f_aliases
     - f_bashrc
+    - f_config
     - f_exports
     - f_gitconfig
+    - f_ini
     - f_my.cnf
     - f_sman.rc
     - f_tmux.conf
     - f_vimrc
-    - f_zshrc
-    - f_config
     - f_xresources
+    - f_zshrc
+  debian-chanda-x:
+    include:
+    - debian
   debian-chanda:
     include:
     - debian
