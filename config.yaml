@@ -45,12 +45,16 @@ dotfiles:
   f_ini:
     src: config/mc/ini
     dst: ~/.config/mc/ini
+  f_debian-chanda-x_vagrantfile:
+    src: vagrant/debian-chanda-x/Vagrantfile
+    dst: ~/.vagrant/debian-chanda-x/Vagrantfile
 profiles:
   MacBook-Pro-ukasz.local:
     include:
     - debian
     dotfiles:
     - f_vagrantfile
+    - f_debian-chanda-x_vagrantfile
   debian:
     dotfiles:
     - d_snippets
