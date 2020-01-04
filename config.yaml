@@ -70,7 +70,7 @@ profiles:
     - f_vimrc
     - f_xresources
     - f_zshrc
-  debian-chanda-x:
+  debian-chanda-openbox:
     include:
     - debian
   debian-chanda:
