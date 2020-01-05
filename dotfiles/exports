@@ -1,5 +1,9 @@
 # vim: syntax=shell
 export NVM_DIR="$HOME/.nvm"
+SNAP_DIR="/snap/bin"
+if [ -d "$SNAP_DIR" ]; then
+  export PATH=$PATH:$SNAP_DIR
+fi
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export DOTREPO="$HOME/.dotfiles"
 export SMAN_APPEND_HISTORY=false

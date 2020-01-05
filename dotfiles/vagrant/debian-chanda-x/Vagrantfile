@@ -1,6 +1,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+#
+# FOR SHARED FOLDERS INSTALL THIS PLUGIN
+# vagrant plugin install vagrant-vbguest
+# AND RUN
+# vagrant vbguest
+# if it succeeds uncoment the shared_folder line
+#
+# FOR DISK RESISING INSTALL THIS PLUGIN
+# vagrant plugin install vagrant-disksize
+# if it succeeds uncoment the v.disksize.size line
+#
+
 Vagrant.configure("2") do |config|
   config.vm.define "debian-chanda-openbox"
   config.vm.box = "debian/buster64"
@@ -12,6 +24,7 @@ Vagrant.configure("2") do |config|
     v.gui = true
     v.name = "debian-chanda-openbox"
     v.memory = 2048
+    # v.disksize.size = '50GB'
   end
   # config.vm.synced_folder "../shared", "/shared"
   $rootscript = <<-SHELL
@@ -48,23 +61,37 @@ Vagrant.configure("2") do |config|
     chsh -s /bin/zsh vagrant
   SHELL
   $rootx= <<-SHELL
-    apt-get -qqy install mousepad nitrogen lightdm openbox tint2 lxappearance gmrun snapd thunar terminator meld firefox-esr-l10n-pl iceweasel
-    apt-get -qqy install build-essential module-assistant linux-headers-$(uname -r)
-    m-a prepare
-    # instalacja SNAPD
+    apt-get -y install numix-gtk-theme numix-icon-theme numix-icon-theme-circle obmenu mousepad nitrogen lightdm openbox tint2 lxappearance gmrun snapd thunar terminator meld firefox-esr-l10n-pl iceweasel
+    # SNAPD
     snap install hello-world
-    snap install --classic code slack
-    snap install teams-for-linux postman dbeaver-ce vlc chromium snap-store
-    # /snap/bin do pliku
-    # TODO: APPGATE
-    # Virtualbox
+    snap install --classic code
+    snap install --classic slack
+    snap install teams-for-linux
+    snap install postman
+    snap install dbeaver-ce
+    snap install vlc
+    snap install chromium
+    snap install snap-store
+    # apt-get -y install build-essential module-assistant linux-headers-$(uname -r)
+    # m-a prepare
     curl https://db.debian.org/fetchkey.cgi?fingerprint=FEDEC1CB337BCF509F43C2243914B532F4DFBE99 | apt-key add
     echo 'deb https://people.debian.org/~lucas/virtualbox-buster/ ./' > /etc/apt/sources.list.d/virtualbox-unofficial.list
-    apt-get -qqy install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
+    apt-get update
+    apt-get -y install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
+    echo "[SeatDefaults]" >>  /etc/lightdm/lightdm.conf
+    echo "autologin-user=vagrant" >>  /etc/lightdm/lightdm.conf
+    apt install /vagrant/AppGate-SDP-client.deb ; apt -y --fix-broken install
+    chmod 4755 /opt/appgate/chrome-sandbox
+  SHELL
+  $userx= <<-SHELL
+    mkdir -p ~/.config/openbox
+    echo 'tint2 &' >> ~/.config/openbox/autostart
+    echo 'nitrogen --restore' >> ~/.config/openbox/autostart
   SHELL
   config.vm.provision "shell", inline: $rootscript
   config.vm.provision "shell", inline: $script, privileged: false
   config.vm.provision "shell", inline: $chsh
   config.vm.provision "shell", inline: $rootx
+  # config.vm.provision "shell", inline: $userx, privileged: false
 end
 

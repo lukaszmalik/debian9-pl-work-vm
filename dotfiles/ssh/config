@@ -37,3 +37,14 @@ Host chanda
     hostname 10.10.129.162
     user lukasz.malik
 
+Host debian-chanda-openbox
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/finch/.vagrant/debian-chanda-x/.vagrant/machines/debian-chanda-openbox/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+

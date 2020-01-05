@@ -48,6 +48,12 @@ dotfiles:
   f_debian-chanda-x_vagrantfile:
     src: vagrant/debian-chanda-x/Vagrantfile
     dst: ~/.vagrant/debian-chanda-x/Vagrantfile
+  d_shared:
+    src: vagrant/shared
+    dst: ~/.vagrant/shared
+  d_openbox:
+    src: config/openbox
+    dst: ~/.config/openbox
 profiles:
   MacBook-Pro-ukasz.local:
     include:
@@ -58,6 +64,8 @@ profiles:
   debian:
     dotfiles:
     - d_snippets
+    - d_shared
+    - d_openbox
     - f_aliases
     - f_bashrc
     - f_config

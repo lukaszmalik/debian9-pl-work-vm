@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Menu">
+		<item label="Run App">
+			<action name="Execute">
+				<execute>gmrun</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="File Manager">
+			<action name="Execute">
+				<execute>thunar</execute>
+			</action>
+		</item>
+		<item label="Terminal">
+			<action name="Execute">
+				<execute>x-terminal-emulator</execute>
+			</action>
+		</item>
+		<item label="Firefox">
+			<action name="Execute">
+				<execute>iceweasel</execute>
+			</action>
+		</item>
+		<item label="Chrome">
+			<action name="Execute">
+				<execute>/snap/bin/chromium</execute>
+			</action>
+		</item>
+		<separator/>
+		<menu id="root-menu-294947" label="Connectivity">
+			<item label="App Gate">
+				<action name="Execute">
+					<execute>appgate</execute>
+				</action>
+			</item>
+			<item label="Teams">
+				<action name="Execute">
+					<execute>/snap/bin/teams-for-linux</execute>
+				</action>
+			</item>
+			<item label="Slack">
+				<action name="Execute">
+					<execute>/snap/bin/slack</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-995111" label="Development">
+			<item label="SQL Editor">
+				<action name="Execute">
+					<execute>/snap/bin/dbeaver-ce</execute>
+				</action>
+			</item>
+			<item label="Postman">
+				<action name="Execute">
+					<execute>/snap/bin/postman</execute>
+				</action>
+			</item>
+			<item label="VS Code">
+				<action name="Execute">
+					<execute>/snap/bin/code</execute>
+				</action>
+			</item>
+		</menu>
+		<menu execute="/usr/bin/obamenu" id="applications-menu" label="Applications"/>
+		<menu id="root-menu-34047" label="Configuration">
+			<item label="Edit this menu">
+				<action name="Execute">
+					<execute>obmenu</execute>
+				</action>
+			</item>
+			<item label="Look and Feel">
+				<action name="Execute">
+					<execute>lxappearance</execute>
+				</action>
+			</item>
+			<item label="Window Manger">
+				<action name="Execute">
+					<execute>obconf</execute>
+				</action>
+			</item>
+			<item label="Reconfigure">
+				<action name="Reconfigure"/>
+			</item>
+		</menu>
+		<!-- This requires the presence of the 'openbox-menu' package to work -->
+		<separator/>
+		<item label="Restart">
+			<action name="Restart"/>
+		</item>
+		<item label="Exit">
+			<action name="Exit"/>
+		</item>
+	</menu>
+</openbox_menu>
