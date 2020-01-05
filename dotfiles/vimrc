@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/romainl/vim-cool'
   Plug 'https://github.com/tpope/vim-commentary'
   Plug 'https://github.com/tpope/vim-surround'
-  Plug 'francoiscabrol/ranger.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
@@ -19,11 +18,18 @@ call plug#begin('~/.vim/plugged')
   Plug 'sainnhe/edge'
   Plug 'mileszs/ack.vim'
   Plug 'editorconfig/editorconfig-vim'
+  Plug 'ntpeters/vim-better-whitespace'
   Plug 'junegunn/goyo.vim'
+  if executable('ranger')
+      Plug 'francoiscabrol/ranger.vim'
+  endif
   if v:version >= 800
       Plug 'mg979/vim-visual-multi'
+      if executable('node')
+          Plug 'neoclide/coc.nvim', {'branch': 'release'}
+      endif
   endif
-  if has('python3')
+  if v:version < 800 && 0 == executable('node') && has('python3')
       Plug 'Shougo/deoplete.nvim'
       Plug 'roxma/nvim-yarp'
       Plug 'roxma/vim-hug-neovim-rpc'
@@ -35,7 +41,7 @@ call plug#end()
 " SETS
 set undofile
 set undodir=$TEMP
-
+set backspace=indent,eol,start
 set autochdir
 set autoindent
 set completeopt=longest,menuone
@@ -68,6 +74,7 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 set guioptions=agrLTi
+set updatetime=300
 
 "Leader
 let mapleader="."
@@ -86,6 +93,15 @@ fun s:TabsToSpaces()
 endf
 command! TabsToSpaces call s:TabsToSpaces()
 
+fun ToggleWrap()
+ if (&wrap == 1)
+   set nowrap
+ else
+   set wrap
+ endif
+endf
+command! ToggleWrap call ToggleWrap()
+
 "Mappings
 map <c-\> :NERDTreeToggle<cr>
 map <c-o> :GFiles<cr>
@@ -93,6 +109,7 @@ map <c-p> :Ranger<cr>
 map <c-l> :Buffers<cr>
 map <c-f> :LAck
 map <c-z> :Goyo<cr>
+map <c-t> :below terminal ++rows=20<cr>
 
 "Mappings - easymotion
 map  <Leader>f <Plug>(easymotion-bd-f)
@@ -110,6 +127,30 @@ if &term =~ '^screen'
 endif
 
 "Plugins
+
+"CoC
+nmap <silent> cR <Plug>(coc-refactor)
+nmap <silent> cd <Plug>(coc-definition)
+nmap <silent> cf <Plug>(coc-format)
+nmap <silent> ci <Plug>(coc-implementation)
+nmap <silent> cr <Plug>(coc-references)
+nmap <silent> cy <Plug>(coc-type-definition)
+nnoremap <silent> <space>w  :<C-b>CocList --normal --top --input windows<cr>
+nnoremap <silent> <space>k  :<C-b>CocList --normal --top --input maps<cr>
+nnoremap <silent> <space>m  :<C-u>CocList --normal --top --input mru<cr>
+nnoremap <silent> <space>o  :<C-u>CocList --normal --top --input outline<cr>
+nnoremap <silent> <space>i  :<C-b>CocInstall coc-lists coc-snippets coc-pairs coc-tsserver coc-json coc-html coc-css coc-phpls coc-python<cr>
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+"Goyo
 let g:goyo_width = 90
 
 if has('python3') "deoplete does not work when there's no python3 (pip3 install --user pynvim) installed
@@ -118,7 +159,7 @@ if has('python3') "deoplete does not work when there's no python3 (pip3 install 
     let g:deoplete#sources#ternjs#timeout = 1
     let g:deoplete#sources#ternjs#docs = 1
     let g:deoplete#sources#ternjs#case_insensitive = 1
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 endif
 
 if executable('ag')
@@ -133,11 +174,6 @@ let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
 
 let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 let g:fzf_buffers_jump = 1
-
-let g:netrw_banner       = 0
-let g:netrw_keepdir      = 0
-let g:netrw_liststyle    = 3
-let g:netrw_sort_options = 'i'
 
 "Vim Session
 let g:session_autosave = 'no'
@@ -158,7 +194,7 @@ let g:startify_list_order = [
 
 " Colors
 let g:edge_style = 'neon'
-let g:edge_disable_italic_comment = 1
+" let g:edge_disable_italic_comment = 1
 set background=dark
 colorscheme edge
 let g:lightline = { 'colorscheme': 'edge' }
