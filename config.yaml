@@ -54,6 +54,12 @@ dotfiles:
   d_openbox:
     src: config/openbox
     dst: ~/.config/openbox
+  d_wallpapers:
+    src: wallpapers
+    dst: ~/.wallpapers
+  f_tint2rc:
+    src: config/tint2/tint2rc
+    dst: ~/.config/tint2/tint2rc
 profiles:
   MacBook-Pro-ukasz.local:
     include:
@@ -63,9 +69,10 @@ profiles:
     - f_debian-chanda-x_vagrantfile
   debian:
     dotfiles:
-    - d_snippets
-    - d_shared
     - d_openbox
+    - d_shared
+    - d_snippets
+    - d_wallpapers
     - f_aliases
     - f_bashrc
     - f_config
@@ -74,6 +81,7 @@ profiles:
     - f_ini
     - f_my.cnf
     - f_sman.rc
+    - f_tint2rc
     - f_tmux.conf
     - f_vimrc
     - f_xresources
