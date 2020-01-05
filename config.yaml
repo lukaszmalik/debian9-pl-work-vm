@@ -81,6 +81,7 @@ profiles:
   debian-chanda-openbox:
     include:
     - debian
+    - f_appgate-sdp-client.deb
   debian-chanda:
     include:
     - debian
