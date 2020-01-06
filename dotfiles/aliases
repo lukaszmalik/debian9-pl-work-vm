@@ -1,4 +1,4 @@
-# vim: syntax=shell
+# vi syntax=shell
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -22,3 +22,7 @@ alias docker_mitm="docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmprox
 alias docker_pybtc="docker run -it -v ~/:/mac lovato/python-2.6 bash"
 alias docker_node="docker run -it -v ~/:/mac --publish 127.0.0.1:19051:19051 node:8.9.1 bash"
 alias docker_postgres="docker run --publish 127.0.0.1:5432:5432 --name lastsignal-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres"
+alias chd="cd ~/.vagrant/debian-chanda-x"
+alias ch-up="cd ~/.vagrant/debian-chanda-x && vagrant up && cd -"
+alias ch="cd ~/.vagrant/debian-chanda-x && vagrant ssh && cd -"
+alias NODE='[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'

@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'editorconfig/editorconfig-vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'junegunn/goyo.vim'
+  Plug 'honza/vim-snippets'
   if executable('ranger')
       Plug 'francoiscabrol/ranger.vim'
   endif

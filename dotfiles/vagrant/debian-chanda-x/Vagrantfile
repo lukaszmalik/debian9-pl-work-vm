@@ -37,10 +37,6 @@ Vagrant.configure("2") do |config|
     usermod -aG docker vagrant
     curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     chmod 744 /usr/local/bin/docker-compose
-    # curl https://packages.sury.org/php/apt.gpg | apt-key add -
-    # echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
-    # apt-get -qqy update
-    # apt-get -qqy install php5.6 php5.6-mysql
   SHELL
   $script = <<-SHELL
     # NVM
@@ -70,11 +66,13 @@ Vagrant.configure("2") do |config|
     # SNAPD
     snap install hello-world
     snap install --classic code
-    # snap install --classic slack
+    snap install --classic slack
     snap install teams-for-linux
-    # snap install postman
-    # snap install dbeaver-ce
+    snap install postman
+    snap install dbeaver-ce
+    snap install vlc
     snap install chromium
+    snap install snap-store
     # apt-get -y install build-essential module-assistant linux-headers-$(uname -r)
     # m-a prepare
     curl https://db.debian.org/fetchkey.cgi?fingerprint=FEDEC1CB337BCF509F43C2243914B532F4DFBE99 | apt-key add

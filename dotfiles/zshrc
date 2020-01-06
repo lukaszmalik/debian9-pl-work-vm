@@ -17,9 +17,8 @@ plugins=(
   tmux
   # zsh-nvm
   # vim-inteaction
-) 
+)
 source $ZSH/oh-my-zsh.sh
-
 source ~/.exports
 source ~/.aliases
 
