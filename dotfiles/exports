@@ -1,4 +1,4 @@
-# vi syntax=shell
+# vi syntax=zsh
 export NVM_DIR="$HOME/.nvm"
 SNAP_DIR="/snap/bin"
 if [ -d "$SNAP_DIR" ]; then
@@ -8,3 +8,4 @@ fi
 export DOTREPO="$HOME/.dotfiles"
 export SMAN_APPEND_HISTORY=false
 export SMAN_SNIPPET_DIR="~/.snippets"
+export PATH=$PATH:~/.sman/bin

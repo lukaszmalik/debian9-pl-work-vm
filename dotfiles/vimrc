@@ -21,6 +21,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'junegunn/goyo.vim'
   Plug 'honza/vim-snippets'
+  if executable('ctags')
+      Plug 'majutsushi/tagbar'
+  endif
   if executable('ranger')
       Plug 'francoiscabrol/ranger.vim'
   endif
@@ -43,7 +46,7 @@ call plug#end()
 set undofile
 set undodir=$TEMP
 set backspace=indent,eol,start
-set autochdir
+" set autochdir
 set autoindent
 set completeopt=longest,menuone
 set fenc=utf-8
@@ -76,6 +79,7 @@ set tabstop=4
 set expandtab
 set guioptions=agrLTi
 set updatetime=300
+set directory^=$HOME/.vim/tmp//
 
 "Leader
 let mapleader="."
@@ -120,6 +124,7 @@ map  <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+nmap <F8> :TagbarToggle<CR>
 
 "MOUSE
 set mouse+=a
@@ -199,5 +204,4 @@ let g:edge_style = 'neon'
 set background=dark
 colorscheme edge
 let g:lightline = { 'colorscheme': 'edge' }
-
 
