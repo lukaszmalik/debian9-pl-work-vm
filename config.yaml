@@ -60,6 +60,15 @@ dotfiles:
   f_tint2rc:
     src: config/tint2/tint2rc
     dst: ~/.config/tint2/tint2rc
+  d_scripts:
+    src: scripts
+    dst: ~/.scripts
+  f_xmodmap:
+    src: Xmodmap
+    dst: ~/.Xmodmap
+  f_sxhkdrc:
+    src: config/sxhkd/sxhkdrc
+    dst: ~/.config/sxhkd/sxhkdrc
 profiles:
   MacBook-Pro-ukasz.local:
     include:
@@ -85,6 +94,9 @@ profiles:
     - f_vimrc
     - f_xresources
     - f_zshrc
+    - d_scripts
+    - f_xmodmap
+    - f_sxhkdrc
   debian-chanda-openbox:
     include:
     - debian

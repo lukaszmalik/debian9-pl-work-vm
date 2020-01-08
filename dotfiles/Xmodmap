@@ -1,0 +1,4 @@
+! Remap CAPS into something more usefull
+remove Lock = Caps_Lock
+keysym Caps_Lock = Control_L
+

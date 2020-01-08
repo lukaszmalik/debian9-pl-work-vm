@@ -1,0 +1,5 @@
+ctrl + w ; c
+   $HOME/.scripts/window.sh
+
+ctrl + o ; {c,w,t}
+	{gnome-terminal,firefox,telegram-desktop}
