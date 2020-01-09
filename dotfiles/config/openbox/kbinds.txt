@@ -1,0 +1,25 @@
+2020-01-09	rc.xml KEYBINDS
+-------------------------------
+
+ 0	C-A-Left        	GoToDesktop
+ 1	C-A-Right       	GoToDesktop
+ 2	C-A-Up          	GoToDesktop
+ 3	C-A-Down        	GoToDesktop
+ 4	S-A-Left        	SendToDesktop
+ 5	S-A-Right       	SendToDesktop
+ 6	S-A-Up          	SendToDesktop
+ 7	S-A-Down        	SendToDesktop
+ 8	A-F4            	Close
+ 9	A-F5            	Iconify
+10	A-F6            	ToggleMaximize
+11	A-Escape        	Lower
+12	A-space         	client-menu
+13	Print           	xfce4-screenshooter
+14	A-Print         	scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/ ; bl.....
+15	A-Tab           	NextWindow
+16	A-S-Tab         	PreviousWindow
+17	C-A-Tab         	NextWindow
+18	A-F2            	gmrun
+19	A-F3            	~/.config/dmenu/dmenu-bind.sh
+20	A-r             	Resize
+21	A-m             	Move

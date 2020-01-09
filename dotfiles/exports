@@ -8,4 +8,5 @@ fi
 export DOTREPO="$HOME/.dotfiles"
 export SMAN_APPEND_HISTORY=false
 export SMAN_SNIPPET_DIR="~/.snippets"
+export PATH=~/.local/bin:$PATH
 export PATH=$PATH:~/.sman/bin

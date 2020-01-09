@@ -11,7 +11,7 @@ super + w ; l;
     xdotool getwindowfocus windowsize 50% 100% ; xdotool getwindowfocus windowmove 50% 0;
 
 super + c;
-    wmctrl -xa terminator || terminator 
+    wmctrl -xa terminator || terminator
 
 super + f;
     wmctrl -xa Firefox || firefox

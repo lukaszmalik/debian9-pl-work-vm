@@ -27,7 +27,7 @@ call plug#begin('~/.vim/plugged')
   if executable('ranger')
       Plug 'francoiscabrol/ranger.vim'
   endif
-  if v:version >= 800
+  if v:version > 800
       Plug 'mg979/vim-visual-multi'
       if executable('node')
           Plug 'neoclide/coc.nvim', {'branch': 'release'}
