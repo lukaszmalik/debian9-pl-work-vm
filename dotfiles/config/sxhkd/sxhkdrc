@@ -18,3 +18,13 @@ super + f;
 
 super + t;
     wmctrl -xa Telegram || telegram-desktop
+
+alt + 2;
+    gmrun
+
+alt + q;
+    wmctrl -c :ACTIVE:
+
+alt + m;
+    xdotool getwindowfocus windowminimize
+
