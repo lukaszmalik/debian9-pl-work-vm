@@ -6,3 +6,9 @@ keycode 45 = k K Up
 keycode 43 = h H Left F33
 keycode 46 = l L Right F34
 
+! keycode 29 = y Y
+keycode 30 = u U Home
+keycode 31 = i I Prior
+keycode 32 = o O Next
+keycode 33 = p P End
+

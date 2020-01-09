@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'junegunn/goyo.vim'
   Plug 'honza/vim-snippets'
+  Plug 'christoomey/vim-tmux-navigator'
   if executable('ctags')
       Plug 'majutsushi/tagbar'
   endif
@@ -200,7 +201,7 @@ let g:startify_list_order = [
 
 " Colors
 let g:edge_style = 'neon'
-" let g:edge_disable_italic_comment = 1
+let g:edge_disable_italic_comment = 1
 set background=dark
 colorscheme edge
 let g:lightline = { 'colorscheme': 'edge' }
