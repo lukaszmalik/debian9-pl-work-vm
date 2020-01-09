@@ -51,9 +51,6 @@ dotfiles:
   d_shared:
     src: vagrant/shared
     dst: ~/.vagrant/shared
-  d_openbox:
-    src: config/openbox
-    dst: ~/.config/openbox
   d_wallpapers:
     src: wallpapers
     dst: ~/.wallpapers
@@ -78,7 +75,6 @@ profiles:
     - f_debian-chanda-x_vagrantfile
   debian:
     dotfiles:
-    - d_openbox
     - d_snippets
     - d_wallpapers
     - f_aliases
