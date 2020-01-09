@@ -1,5 +1,20 @@
-ctrl + w ; c
-   $HOME/.scripts/window.sh
+super + w ; w;
+    xdotool getwindowfocus windowsize 70% 80% ; xdotool getwindowfocus windowmove 15% 10%;
 
-ctrl + o ; {c,w,t}
-	{gnome-terminal,firefox,telegram-desktop}
+super + w ; super + w;
+    xdotool getwindowfocus windowsize 100% 100% ; xdotool getwindowfocus windowmove 0 0 ;
+
+super + w ; h;
+    xdotool getwindowfocus windowsize 50% 100% ; xdotool getwindowfocus windowmove 0 0;
+
+super + w ; l;
+    xdotool getwindowfocus windowsize 50% 100% ; xdotool getwindowfocus windowmove 50% 0;
+
+super + c;
+    wmctrl -xa terminator || terminator 
+
+super + f;
+    wmctrl -xa Firefox || firefox
+
+super + t;
+    wmctrl -xa Telegram || telegram-desktop

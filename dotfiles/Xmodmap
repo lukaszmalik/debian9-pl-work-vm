@@ -1,4 +1,8 @@
-! Remap CAPS into something more usefull
-remove Lock = Caps_Lock
-keysym Caps_Lock = Control_L
+! CapsLock -> Mode_switch
+keycode 66 = Mode_switch
+
+keycode 44 = j J Down
+keycode 45 = k K Up
+keycode 43 = h H Left F33
+keycode 46 = l L Right F34
 
