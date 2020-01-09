@@ -1,35 +1,11 @@
 xset b off
 xset r rate 250 25
-# setxkbmap -option ctrl:nocaps
-## Configure touchpad. See 'man synaptics' for more info.
 synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null
-## Disable touchpad while typing
 syndaemon -i .5 -K -t -R -d &
-## GNOME PolicyKit authentication
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-## Set a wallpaper
 nitrogen --restore
-
-## Compton
-bl-compositor --start
-
-## Start the tint2 session (the default tint2 will run if no sessions have been set)
-bl-tint2-session
-
-## Start PulseAudio
-bl-start-pulseaudio-x11
-
-## Volume control for systray
 volumeicon &
 
-## Start the Conky session (the default conkyrc will run if no sessions have been set)
-bl-conky-session --autostart &
 
-## Start the battery applet
-#fdpowermon &
-
-## Start Clipboard manager
-clipit &
 
 $HOME/.scripts/autostart.sh
-
