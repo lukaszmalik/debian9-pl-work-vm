@@ -31,3 +31,6 @@ alt + q;
 alt + m;
     xdotool getwindowfocus windowminimize
 
+F12
+   sleep 0.1; xdotool keydown ctrl key a keyup ctrl key a key n;
+
