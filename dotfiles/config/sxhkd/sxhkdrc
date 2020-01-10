@@ -1,3 +1,6 @@
+super + w ; u;
+    xdotool getwindowfocus windowsize 50% 70% ; xdotool getwindowfocus windowmove 5% 10%
+
 super + w ; w;
     xdotool getwindowfocus windowsize 70% 80% ; xdotool getwindowfocus windowmove 15% 10%;
 
@@ -19,7 +22,7 @@ super + f;
 super + t;
     wmctrl -xa Telegram || telegram-desktop
 
-alt + 2;
+alt + F2;
     gmrun
 
 alt + q;
