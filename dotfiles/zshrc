@@ -59,6 +59,9 @@ alias -g M="| more"
 alias -g S="| sort"
 alias -g NOCOLOR='|sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
+alias find_feed='for i  ( "10.169.20.120" "10.169.21.232" "10.169.22.168" "10.169.22.73"); do; echo $i; dps $i | grep feed | cut -d" " -f1; done;'
+alias find_feed_live='for i  ("10.169.14.240" "10.169.13.182" "10.169.13.171" "10.169.12.36"); do; echo $i; dps $i | grep feed | cut -d" " -f1; done;'
+
 # OPTIONS
 setopt always_to_end
 setopt auto_resume
