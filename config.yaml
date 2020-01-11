@@ -96,6 +96,9 @@ profiles:
   debian-chanda-openbox:
     include:
     - debian
+  debian-chanda-openbox-70:
+    include:
+    - debian
   debian-chanda:
     include:
     - debian
