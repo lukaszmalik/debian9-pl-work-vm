@@ -7,6 +7,7 @@ It's a **Debian 9.11** machine with **50GB** harddrive, **polish** locale and **
     git clone https://github.com/lukaszmalik/debian9-pl-work-vm.git work-vm
     cd work-vm
     vagrant up
+    vagrant reload
 
 # I DON'T trust the author:
     apt install packer vagrant
