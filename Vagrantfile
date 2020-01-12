@@ -35,6 +35,9 @@ Vagrant.configure("2") do |config|
       meld \
       mousepad \
       ncdu \
+      net-tools\
+      network-manager \
+      network-manager-gnome \
       nitrogen \
       numix-gtk-theme \
       numix-icon-theme \
@@ -57,6 +60,7 @@ Vagrant.configure("2") do |config|
 
     echo "[SeatDefaults]" >>  /etc/lightdm/lightdm.conf
     echo "autologin-user=vagrant" >>  /etc/lightdm/lightdm.conf
+    sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf
     curl https://sdpdownloads.cyxtera.com/latest/ubuntu/AppGate-SDP-client.deb > /tmp/AppGate-SDP-client.deb
     apt install -y /tmp/AppGate-SDP-client.deb ; apt -y --fix-broken install
     if [[ -f "/opt/appgate/chrome-sandbox" ]]; then
@@ -77,9 +81,10 @@ Vagrant.configure("2") do |config|
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     nvm install v12.14.0
     # openbox
+    mkdir -p $HOME/.config/openbox/
+    mkdir -p $HOME/.config/tint2/
     cp /vagrant/configs/tint2rc $HOME/.config/tint2/tint2rc
     cp /vagrant/configs/gtkrc-2.0 $HOME/.gtkrc-2.0
-    mkdir -p $HOME/.config/openbox/
     cp /vagrant/configs/openbox/autostart $HOME/.config/openbox/
     cp /vagrant/configs/openbox/menu.xml $HOME/.config/openbox/
     cp /vagrant/configs/openbox/rc.xml $HOME/.config/openbox/
