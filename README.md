@@ -20,3 +20,6 @@ It's a **Debian 9.11** machine with **50GB** harddrive, **polish** locale and **
     vagrant up
     vagrant reload
 
+# Screenshot:
+![alt text](screenshot.png "Screenshot")
+
